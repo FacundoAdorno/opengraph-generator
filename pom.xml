@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ar.edu.unlp.sedici</groupId>
+	<artifactId>opengraph-generator</artifactId>
+	<version>0.0.1</version>
+	<name>An OpenGraph metadata generator for Java</name>
+	<description>This tiny package generate meta fields used in head HTML section to represent an Object in the OpenGraph protocol (http://ogp.me).</description>
+	<organization>
+		<name>SEDICI</name>
+		<url>http://sedici.unlp.edu.ar</url>
+	</organization>
+</project>
