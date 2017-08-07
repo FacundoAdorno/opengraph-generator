@@ -2,6 +2,7 @@ package ar.edu.unlp.sedici.opengraph_generator;
 
 import java.util.ArrayList;
 
+import ar.edu.unlp.sedici.opengraph_generator.OpenGraphNamespace.Default_OG_Metadata;
 import ar.edu.unlp.sedici.opengraph_generator.type.ArticleType;
 import ar.edu.unlp.sedici.opengraph_generator.type.BookType;
 import ar.edu.unlp.sedici.opengraph_generator.type.MusicType;
@@ -34,7 +35,7 @@ public class OpenGraphGenerator {
 	//The type of your object, e.g., "video.movie". Depending on the type you specify, other properties may also be required.
 	private OpenGraphObjectType type;
 	//This is the default Object Type is no one is specified. Any non-marked up webpage should be treated as og:type website.
-	public static OpenGraphObjectType DEFAULT_OBJECT_TYPE = new WebsiteType();
+	public static final OpenGraphObjectType DEFAULT_OBJECT_TYPE = new WebsiteType();
 	
 	/**
 	 * Optional metadata
@@ -55,52 +56,78 @@ public class OpenGraphGenerator {
 	private ArrayList<ArrayList<OpenGraphMetadata>> videos;
 	
 	//Holds the list of simple metadata set for the object
-	private ArrayList<OpenGraphMetadata> simpleMetadata;
+	private ArrayList<OpenGraphMetadata> metadata;
 	
 	
 	
 	public void setTitle(String title) {
-		this.title = new OpenGraphMetadata(title);
+		this.title = new OpenGraphMetadata(Default_OG_Metadata.TITLE.text(), title);
 	}
 
 	public void setUrl(String url) {
-		this.url =  new OpenGraphMetadata(url);
+		this.url =  new OpenGraphMetadata(Default_OG_Metadata.URL.text(), url);
 	}
 
 	public void setSiteName(String siteName) {
-		this.siteName = new OpenGraphMetadata(siteName);
+		this.siteName = new OpenGraphMetadata(Default_OG_Metadata.SITENAME.text(),siteName);
 	}
 
 	public void setDescription(String description) {
-		this.description = new OpenGraphMetadata(description);
+		this.description = new OpenGraphMetadata(Default_OG_Metadata.DESCRIPTION.text(),description);
 	}
 
 	public void setDeterminer(String determiner) {
-		this.determiner = new OpenGraphMetadata(determiner);
+		this.determiner = new OpenGraphMetadata(Default_OG_Metadata.DETERMINER.text(), determiner);
 	}
 
 	public void setLocale(String locale) {
-		this.locale = new OpenGraphMetadata(locale);
+		this.locale = new OpenGraphMetadata(Default_OG_Metadata.LOCALE.text(), locale);
 	}
 	
-	public void setCustomType(OpenGraphObjectType customType) {
-		this.type = customType;
+	public void addAlternativeLocale(String alt_locale) {
+		this.metadata.add(new OpenGraphMetadata(Default_OG_Metadata.LOCALE_ALTERNATE.text(), alt_locale));
 	}
 	
+	public void addAudio(String url, String secureUrl, String mimetype, String width, String height, String alt){
+		ArrayList<OpenGraphMetadata> audio = new ArrayList<OpenGraphMetadata>();
+		audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_URL.text(), url));
+		if(secureUrl != null && secureUrl.length() > 0) {
+			audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_SECURE_URL.text(), secureUrl));
+		}
+		if(mimetype != null && mimetype.length() > 0) {
+			audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_TYPE.text(), mimetype));
+		}
+		if(width != null && width.length() > 0) {
+			audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_WIDTH.text(), width));
+		}
+		if(height != null & height.length() > 0) {
+			audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_HEIGHT.text(), height));
+		}
+		if(alt != null & alt.length() > 0) {
+			audio.add(new OpenGraphMetadata(Default_OG_Metadata.IMAGE_ALT.text(), alt));
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////
+	/////			VERTICAL TYPES
+	///////////////////////////////////////////////////////////////
+	public void setMusicType(String subtype) {
+		this.type = new MusicType(subtype);
+	}
+	
+	public void setVideoType(String subtype) {
+		this.type = new VideoType(subtype);
+	}
+	
+	////////////////////////////////////////////////////////////////
+	/////			NO-VERTICAL TYPES
+	///////////////////////////////////////////////////////////////
 	public void setArticleType() {
 		this.type = new ArticleType();
 	}
 	
 	public void setBookType() {
 		this.type = new BookType();
-	}
-	
-	public void setMusicType() {
-		this.type = new MusicType();
-	}
-	
-	public void setVideoType() {
-		this.type = new VideoType();
 	}
 	
 	public void setProfileType() {
@@ -111,10 +138,8 @@ public class OpenGraphGenerator {
 		this.type = new ProfileType();
 	}
 	
-	
-	
-
-	
-	
-	
+	public void setCustomType(OpenGraphObjectType customType) {
+		this.type = customType;
+	}
+		
 }

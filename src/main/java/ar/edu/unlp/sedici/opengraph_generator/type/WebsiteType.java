@@ -6,7 +6,7 @@ package ar.edu.unlp.sedici.opengraph_generator.type;
 import ar.edu.unlp.sedici.opengraph_generator.OpenGraphNamespace;
 
 /**
- * @author facundo
+ * @author facundo@sedici.unlp.edu.ar
  *
  */
 public class WebsiteType extends OpenGraphObjectType {
