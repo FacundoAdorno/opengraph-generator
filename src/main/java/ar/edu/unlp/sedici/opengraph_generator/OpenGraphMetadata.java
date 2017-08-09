@@ -87,6 +87,23 @@ public class OpenGraphMetadata {
 	}
 
 	/**
+	 * Return partial or the full name of this metadata instance
+	 * @param withSchema 		If @code true, return the metadata name as "schema:element[:qualifier]". If @code false, get the name as "element[:qualifier]"  
+	 * @return the metadata instance name
+	 */
+	public String getMetadataName(boolean withSchema) {
+		String metadataName = "";
+		if(withSchema) {
+			metadataName += this.namespace.getPrefix();
+		}
+		metadataName += this.element;
+		if(this.qualifier != null) {
+			metadataName += (":" + this.qualifier);
+		}
+		return metadataName;
+		
+	}
+	/**
 	 * Get a value of 'name="{namespace}:{element}:{qualifier}" value="{value}" '
 	 * @return String that represents de metadata
 	 */

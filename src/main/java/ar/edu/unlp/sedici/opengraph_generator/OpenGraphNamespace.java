@@ -30,7 +30,21 @@ public class OpenGraphNamespace {
 		public String text() {
 			return this.metadataName;
 		}
+		public String getElement() {
+			if(metadataName.contains(":")) {
+				return metadataName.split(":")[0];
+			} else {
+				return metadataName;
+			}
+		}
 		
+		public String getQualifier() {
+			if(metadataName.contains(":")) {
+				return metadataName.split(":")[1];
+			} else {
+				return null;
+			}
+		}
 		/**
 		 * Get the mandatory metadata for the "og" metadata schema namespace
 		 * @return a list with of mandatory metadata for "og" namespace.

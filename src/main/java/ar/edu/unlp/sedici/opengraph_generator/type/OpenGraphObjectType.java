@@ -93,7 +93,7 @@ public abstract class OpenGraphObjectType {
 	 * @return the concatenation 'type'.'subtype', if subtype was set.
 	 */
 	public String getFullSubtype() {
-		if(this.subtype != null) {
+		if(this.subtype != null && this.subtype != NO_VERTICAL_TYPE_SUBTYPE) {
 			return typeNamespace.getPrefix() + '.' + this.subtype;
 		} else {
 			return typeNamespace.getPrefix();
@@ -173,7 +173,7 @@ public abstract class OpenGraphObjectType {
 	protected OpenGraphMetadata getMetadataToAdd(String subtype, String metadataName, String value) throws InvalidMetadataBindingException{
 		if(subtypeMetadataRestrictions.containsKey(subtype)) {
 			if( subtypeMetadataRestrictions.get(subtype).contains(metadataName) ) {
-				return OpenGraphUtils.createMetadata(typeNamespace.getPrefix() + ":" + metadataName, typeNamespace, value);
+				return OpenGraphUtils.createMetadata(metadataName, typeNamespace, value);
 			} 
 			throw new InvalidMetadataBindingException("The metadata '" + metadataName + "' is not binding/restricted for the '" + typeNamespace.getPrefix() + "." + subtype + "' subtype.");
 		} 
