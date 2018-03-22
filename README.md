@@ -1,9 +1,9 @@
 # opengraph-generator
-Open Graph Protocol implementation for Java. Based on the specifications at http://ogp.me/. Still in development.
+Open Graph Protocol implementation for Java. Based on the specifications at http://ogp.me/. **Still in development**.
 
 
 ## EXAMPLE OF USE
-There is a quickly and easy example of use to this library in the main method of the [OpenGraphGenerator.java](https://github.com/FacundoAdorno/opengraph-generator/blob/master/src/main/java/ar/edu/unlp/sedici/opengraph_generator/OpenGraphGenerator.java#L254) main class
+There is a quickly and easy example of use of this library in the main method of the [OpenGraphGenerator.java](https://github.com/FacundoAdorno/opengraph-generator/blob/master/src/main/java/ar/edu/unlp/sedici/opengraph_generator/OpenGraphGenerator.java#L254) main class
 
 ~~~java
 public static void main(String[] args) {
