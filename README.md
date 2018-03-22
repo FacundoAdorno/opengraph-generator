@@ -26,3 +26,23 @@ public static void main(String[] args) {
   }
 }
 ~~~
+
+The output of above code is
+
+~~~html
+property = "og:locale:alternate" content = "pt" 
+property = "og:locale:alternate" content = "en" 
+property = "og:locale:alternate" content = "jp" 
+property = "og:locale:alternate" content = "fr" 
+property = "og:type" content = "article" 
+property = "og:title" content = "Repositorios DSpace con múltiples contextos OAI-PMH" 
+property = "og:locale" content = "es" 
+property = "article:author" content = "https://www.researchgate.net/profile/Facundo_Adorno" 
+property = "article:author" content = "https://www.researchgate.net/profile/Ariel_Lira" 
+property = "article:author" content = "https://www.researchgate.net/profile/Marisa_De_Giusti" 
+property = "article:published_time" content = "2014-11" 
+property = "article:tag" content = "DSpace" 
+property = "article:tag" content = "xoai" 
+property = "article:tag" content = "SEDICI" 
+property = "article:tag" content = "data provider"
+~~~
